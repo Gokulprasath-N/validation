@@ -1,0 +1,64 @@
+<form class="reg-form" #form="ngForm">
+  <div style="text-align: center;">
+    <h3>Sign up</h3>
+    <div class="id">
+      <label for="id">Enter your name:</label>
+      <input type="text" 
+      name="text" 
+      [(ngModel)]="text"
+      #id="ngModel"
+       ngModel 
+       required 
+       pattern="[a-z A-Z 0-9]+" 
+       autocomplete="off">
+      <br>
+    </div>
+
+    <span class="error" *ngIf="id.invalid && id.touched"> Enter valid name</span>
+   <br>
+
+
+    <div class="pass">
+      <label for="pass" >Password:</label>
+      <input type="password"
+       name="pass" 
+       [(ngModel)]="number"
+       #pass="ngModel"
+       ngModel
+       required
+       pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}"
+       autocomplete="off">
+      <br>
+    </div>
+    <span class="error" *ngIf="pass.invalid && pass.touched"> Enter valid name</span>
+  <br>
+  
+  
+    <div>
+      <label>Country:</label>
+      <select name="country" [(ngModel)]="country"  (change)="onState()" >
+      <option selected disabled>select country</option>
+      <option value="India" >India</option>
+      <option value="UsStates" >United States</option>
+      <option value="UkStates" >United Kingdom</option>
+    </select>
+    <label>State:</label>
+    <select>
+      <option *ngFor="let state of states" value="state">{{state}}</option>
+    </select>
+    </div>
+  
+  
+  
+    <div>
+      <label>Date: {{myDate |date: "dd-MM-yyyy" }}</label><br>
+      <label>Time: {{myDate |date: 'h:mm:ss a' }}</label>
+    </div>
+  
+  
+  
+  </div>
+  
+  
+  
+</form>
